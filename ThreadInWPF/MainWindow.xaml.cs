@@ -22,6 +22,7 @@ namespace ThreadInWPF
     /// </summary>
     public partial class MainWindow : Window
     {
+        private static double _sliderValue;
         public MainWindow()
         {
             InitializeComponent();
@@ -54,13 +55,22 @@ namespace ThreadInWPF
                     MyTextBlock.Text = fibonachiNumber.ToString();
                 }));
 
-                Thread.Sleep(500);
+                Thread.Sleep((int)_sliderValue);
 
                 oldSummand = fibonachiNumber;
                 fibonachiNumber += summand;
                 summand = oldSummand;
 
             }
+        }
+
+        private void MySlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            _sliderValue = MySlider.Value * 10;
+            Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Background, new Action(() =>
+            {
+                SliderTextBlock.Text = _sliderValue.ToString();
+            }));
         }
     }
 }
