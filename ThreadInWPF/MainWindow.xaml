@@ -5,8 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ThreadInWPF"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="800" Loaded="Window_Loaded">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0" x:Name="MyTextBlock" TextWrapping="Wrap" Text="TextBlock"/>
+        <Slider x:Name="MySlider" Grid.Row="1" LargeChange="10" Maximum="1000" Minimum="10" SmallChange="10" TickFrequency="5" TickPlacement="Both" Value="50" IsSnapToTickEnabled="True" ValueChanged="MySlider_ValueChanged"/>
+        <TextBlock x:Name="SliderTextBlock"  Grid.Row="2" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Center"/>
 
     </Grid>
 </Window>
