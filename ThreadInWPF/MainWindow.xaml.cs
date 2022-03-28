@@ -40,6 +40,8 @@ namespace ThreadInWPF
                 Name = "TextBlockTextUpdateThread"
             };
             threadFibonachi.Start();
+
+            Thread.Sleep(1000);
         }
 
         private void TextBlockUpdateInThread()
@@ -74,3 +76,10 @@ namespace ThreadInWPF
         }
     }
 }
+
+/*
+ * Если я правильно понял, то в задании 1.3 требуется описать
+ * метод Abort и ошибку которою он вызывает (ThreadAbortException). 
+ * Но данный метод не поддерживается. А метод Interapt немного не 
+ * подходит под описание в заднии, как мне кажется.
+ * */
