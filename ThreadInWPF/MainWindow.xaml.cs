@@ -40,8 +40,6 @@ namespace ThreadInWPF
                 Name = "TextBlockTextUpdateThread"
             };
             threadFibonachi.Start();
-
-            Thread.Sleep(1000);
         }
 
         private void TextBlockUpdateInThread()
