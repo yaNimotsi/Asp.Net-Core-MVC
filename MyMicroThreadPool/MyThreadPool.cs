@@ -2,14 +2,14 @@
 
 namespace MyMicroThreadPool
 {
-    internal class MyTreadPool
+    internal class MyThreadPool
     {
         private readonly int _minThread = 3;
         private const int CleanUpTimeOut = 50000;
 
         private ConcurrentQueue<TaskInfo> _taskInQueue;
         private List<TaskItem> _threadPool;
-        public MyTreadPool()
+        public MyThreadPool()
         {
             StartInitialize();
         }
@@ -42,8 +42,8 @@ namespace MyMicroThreadPool
                             {
                                 var taskItem = new TaskItem()
                                 {
-                                    
-                                }
+
+                                };
                                 AddTaskItemToThreadPool(taskItem);
                             }
                         }

@@ -5,7 +5,9 @@ VisualStudioVersion = 17.1.32319.34
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ThreadInWPF", "ThreadInWPF\ThreadInWPF.csproj", "{58B4B8B2-1DF6-4B1F-8135-8B3158814B4C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyMicroThreadPool", "MyMicroThreadPool\MyMicroThreadPool.csproj", "{237B984D-B514-45CF-987D-7A32AB8C0E0D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyMicroThreadPool", "MyMicroThreadPool\MyMicroThreadPool.csproj", "{237B984D-B514-45CF-987D-7A32AB8C0E0D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThreadPoolV3", "ThreadPoolV3\ThreadPoolV3.csproj", "{D2FD005A-69F0-456C-907E-B995698150E1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{237B984D-B514-45CF-987D-7A32AB8C0E0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{237B984D-B514-45CF-987D-7A32AB8C0E0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{237B984D-B514-45CF-987D-7A32AB8C0E0D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D2FD005A-69F0-456C-907E-B995698150E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D2FD005A-69F0-456C-907E-B995698150E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D2FD005A-69F0-456C-907E-B995698150E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D2FD005A-69F0-456C-907E-B995698150E1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
