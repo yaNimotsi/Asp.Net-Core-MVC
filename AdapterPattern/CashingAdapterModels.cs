@@ -2,14 +2,14 @@
 
 namespace AdapterPattern
 {
-    internal class CashAdapterModels
+    internal class CashingAdapterModels
     {
         private List<JsonInfoExternalModel> _jsonInfoExternalModels;
 
         private List<ExternalModelToClientUnitOfTradeAdaptre>? modelsAfterConvert;
         public List<ExternalModelToClientUnitOfTradeAdaptre>? ModelsAfterConver => modelsAfterConvert;
 
-        public CashAdapterModels(List<JsonInfoExternalModel> jsonInfoList)
+        public CashingAdapterModels(List<JsonInfoExternalModel> jsonInfoList)
         {
             _jsonInfoExternalModels = jsonInfoList;
             ProccessingJson();
