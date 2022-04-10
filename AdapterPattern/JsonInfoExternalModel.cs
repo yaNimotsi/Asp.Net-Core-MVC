@@ -3,6 +3,6 @@
     public class JsonInfoExternalModel
     {
         public string ExternalJson { get; set; }
-        public Object ExternalModel { get; set; }
+        public ExternalModelEnum ExternalModel { get; set; }
     }
 }
