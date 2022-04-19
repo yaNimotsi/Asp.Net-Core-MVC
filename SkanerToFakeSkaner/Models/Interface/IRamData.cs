@@ -1,4 +1,4 @@
-﻿namespace FakeSkaner.Models.Interface
+﻿namespace SkanerToFakeSkaner.Models.Interface
 {
     public interface IRamData
     {

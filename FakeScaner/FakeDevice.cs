@@ -1,62 +1,98 @@
-﻿using FakeScaner.Models;
+﻿using FakeSkaner.Models;
 
-using System.Reflection;
+using System.Text.Json;
+using FakeSkaner.Models.Interface;
 
-namespace FakeScaner;
-public class FakeDevice : IScanerData
+namespace FakeSkaner
 {
-    private List<ICpuData> _cpuDataList;
-    private List<IRamData> _rumDataList;
-
-    public List<ICpuData> CpuDaataList => _cpuDataList;
-    public List<IRamData> RumDaataList => _rumDataList;
-
-    public IDeviceInfo ScanAndSave()
+    internal sealed class FakeDevice
     {
-        CpuScan();
-        RamScan();
+        public readonly string _pathToSave;
 
-        var deviceInfo = new DeviseInfo()
+        private List<ICpuData> _cpuDataList;
+        private List<IRamData> _rumDataList;
+
+        private DeviseInfo _deviseInfo;
+
+        public DeviseInfo DeviseInfo => _deviseInfo;
+
+        //public List<ICpuData> CpuDataList => _deviseInfo.CpuData;
+        //public List<IRamData> RumDataList => _deviseInfo.RamData;
+
+        public FakeDevice()
         {
-            CpuData = CpuDaataList,
-            RamData = RumDaataList,
-        };
+            _pathToSave = string.Concat((Environment.CurrentDirectory), @"\"
+                , $"saveData {DateTime.Now:hh-mm}.txt");
 
-        return deviceInfo;
-    }
-
-    private void CpuScan()
-    {
-        _cpuDataList = new List<ICpuData>();
-
-        var random = new Random();
-
-        for(int i = 0; i < 100; i++)
-        {
-            _cpuDataList.Add(new CpuData()
-            {
-                Percent = random.Next(100),
-                Threads = random.Next(12),
-                Error = random.Next(2) == 1
-            }) ;
+            SkanAndSave();
         }
-    }
 
-    private void RamScan()
-    {
-        _rumDataList = new List<IRamData>();
-
-        var random = new Random();
-
-        for (int i = 0; i < 100; i++)
+        public IDeviceInfo SkanAndSave()
         {
-            _rumDataList.Add(new RamData()
+            CpuScan();
+            RamScan();
+
+            _deviseInfo = new DeviseInfo()
             {
-                FreeMem = random.Next(32000),
-                TotalMem = 32000,
-                Error = random.Next(2) == 1
-            });
+                CpuData = _cpuDataList,
+                RamData = _rumDataList
+            };
+
+            SaveToFile(_deviseInfo);
+
+            return _deviseInfo;
+        }
+
+        private void SaveToFile(DeviseInfo deviseInfo)
+        {
+            var json = JsonSerializer.Serialize(deviseInfo);
+
+            using var sw = new StreamWriter(_pathToSave);
+
+            try
+            {
+                sw.Write(json);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine($"Записать данные не удалось {e.Message}");
+            }
+        }
+
+        private void CpuScan()
+        {
+            _cpuDataList = new List<ICpuData>();
+
+            var random = new Random();
+
+            for (int i = 0; i < 100; i++)
+            {
+                _cpuDataList.Add(new CpuData()
+                {
+                    Percent = random.Next(100),
+                    Threads = random.Next(12),
+                    Error = random.Next(2) == 1
+                });
+            }
+        }
+
+        private void RamScan()
+        {
+            _rumDataList = new List<IRamData>();
+
+            var random = new Random();
+
+            for (int i = 0; i < 100; i++)
+            {
+                _rumDataList.Add(new RamData()
+                {
+                    FreeMem = random.Next(32768),
+                    TotalMem = 32768,
+                    Error = random.Next(2) == 1
+                });
+            }
         }
     }
 }
+
 
